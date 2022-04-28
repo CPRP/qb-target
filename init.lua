@@ -82,7 +82,35 @@ Config.TargetBones = {
 }
 
 Config.TargetModels = {
-
+	["mt-hunting"] = {
+        models = {
+            "cs_hunter",
+        },
+        options = {
+            {
+                type = "client",
+                event = "mt-hunting:client:LojaCaca",
+                icon = "fas fa-circle",
+                label = "Talk to employee",
+            },
+        },
+        distance = 2.5,
+    },
+	["burgershotgarage"] = {
+		models = {
+			"ig_floyd"
+		},
+		options = {
+			{
+				type = "client",
+				event = "garage:BurgerShotGarage",
+				icon = "fas fa-car",
+				label = "BurgerShot Garage",
+				job = "burgershot",
+			}
+		},
+		distance = 2.5,
+	},
 }
 
 Config.GlobalPedOptions = {
@@ -102,7 +130,14 @@ Config.GlobalPlayerOptions = {
 }
 
 Config.Peds = {
-
+	{ 
+		model = 'cs_hunter',
+		coords = vector4(-776.04, 5602.91, 32.74, 270.54),
+		gender = 'male',
+		freeze = true,
+		invincible = false,
+		blockevents = false,
+	},
 }
 
 -------------------------------------------------------------------------------
