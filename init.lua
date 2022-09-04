@@ -82,20 +82,34 @@ Config.TargetBones = {
 }
 
 Config.TargetModels = {
-	["mt-hunting"] = {
-        models = {
-            "cs_hunter",
-        },
-        options = {
-            {
-                type = "client",
-                event = "mt-hunting:client:LojaCaca",
-                icon = "fas fa-circle",
-                label = "Talk to employee",
-            },
-        },
-        distance = 2.5,
-    },
+	[1] = { --Change number according to your peds
+		models = {
+			's_m_m_doctor_01',
+		},
+		options = {
+			{
+				type = "client",
+				event = "lumio-pets:client:vetmenu",
+				icon = 'fas fa-stethoscope',
+				label = 'Bring pet to vet',
+			}
+		},
+		distance = 2.5,
+	},
+	[2] = {
+		models = {
+			'a_f_y_eastsa_03',
+		},
+		options = {
+			{
+				type = "client",
+				event = "lumio-pets:client:shopmenu",
+				icon = 'fas fa-cat',
+				label = 'Pet store',
+			}
+		},
+		distance = 2.5,
+	},
 	["burgershotgarage"] = {
 		models = {
 			"ig_floyd"
