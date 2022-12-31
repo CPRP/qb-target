@@ -15,6 +15,9 @@ end
 -- Settings
 -------------------------------------------------------------------------------
 
+local Allowrefuel = false -- CDN-Fuel
+local AllowElectricRefuel = false -- CDN-Fuel
+
 Config = {}
 
 -- It's possible to interact with entities through walls so this should be low
@@ -77,8 +80,37 @@ Config.PolyZones = {
 
 }
 
-Config.TargetBones = {
-
+Config.TargetBones = {  ---added for cdn-fuel:main
+    ["trunk"] = {
+        bones = {
+            "boot"
+        },
+        options = {
+            {
+                type = "client", 
+                event = "qb-trunk:client:GetIn", 
+                icon = 'fas fa-circle',
+                label = 'Get in trunk',
+            },
+            {
+                type = "client",
+                event = "cdn-fuel:client:RefuelMenu",
+                icon = "fas fa-gas-pump",
+                label = "Insert Nozzle",
+                canInteract = function() return Allowrefuel end
+            },
+            {
+                type = "client",
+                action = function()
+                    TriggerEvent('cdn-fuel:client:electric:RefuelMenu')
+                end,
+                icon = "fas fa-bolt",
+                label = "Insert Electric Nozzle",
+                canInteract = function() return AllowElectricRefuel end
+            },
+        },
+        distance = 3.0
+    },
 }
 
 Config.TargetModels = {
@@ -162,6 +194,22 @@ local function GangCheck() return true end
 local function JobTypeCheck() return true end
 local function ItemCheck() return true end
 local function CitizenCheck() return true end
+
+local function AllowRefuel(state, electric) -- CDN-Fuel
+    if state then
+		if electric then
+			AllowElectricRefuel = true
+		else
+        	Allowrefuel = true
+		end
+    else
+		if electric then
+			AllowElectricRefuel = false
+		else
+			Allowrefuel = false
+		end
+    end
+end exports('AllowRefuel', AllowRefuel)
 
 CreateThread(function()
 	local state = GetResourceState('qb-core')
