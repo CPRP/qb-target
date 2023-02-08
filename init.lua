@@ -176,14 +176,7 @@ Config.GlobalPlayerOptions = {
 }
 
 Config.Peds = {
-	{ 
-		model = 'cs_hunter',
-		coords = vector4(-776.04, 5602.91, 32.74, 270.54),
-		gender = 'male',
-		freeze = true,
-		invincible = false,
-		blockevents = false,
-	},
+
 }
 
 -------------------------------------------------------------------------------
